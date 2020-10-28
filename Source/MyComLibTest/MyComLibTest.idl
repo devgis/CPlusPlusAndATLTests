@@ -1,0 +1,62 @@
+﻿// MyComLibTest.idl: MyComLibTest 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 生成类型库(MyComLibTest.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a817e7a2-43fa-11d0-9e44-00aa00b6770a),
+	dual,
+	pointer_default(unique)
+]
+interface IComponentRegistrar : IDispatch
+{
+	[id(1)]	HRESULT Attach([in] BSTR bstrPath);
+	[id(2)]	HRESULT RegisterAll();
+	[id(3)]	HRESULT UnregisterAll();
+	[id(4)]	HRESULT GetComponents([out] SAFEARRAY(BSTR)* pbstrCLSIDs, [out] SAFEARRAY(BSTR)* pbstrDescriptions);
+	[id(5)]	HRESULT RegisterComponent([in] BSTR bstrCLSID);
+	[id(6)] HRESULT UnregisterComponent([in] BSTR bstrCLSID);
+};
+
+[
+	object,
+	uuid(572271a0-5bce-4afd-a5dd-d2094dcc70c6),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITestATLClass : IDispatch
+{
+	[id(1)] HRESULT AddMethod(LONG a, LONG b);
+	[id(2)] HRESULT AddAndRet(LONG a, LONG b, [out, retval]LONG* rt);
+};
+[
+	uuid(9d3afe0c-3a10-41d8-b2c0-afa0c0b5e75a),
+	version(1.0),
+	custom(a817e7a1-43fa-11d0-9e44-00aa00b6770a,"{d0b9e1c2-b341-4f46-80ee-ebd9e4ad4e19}")
+]
+library MyComLibTestLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(d0b9e1c2-b341-4f46-80ee-ebd9e4ad4e19)
+	]
+	coclass CompReg
+	{
+		[default] interface IComponentRegistrar;
+	};
+	[
+		uuid(da83ddea-a273-4147-89f9-1eb9af7050a1)
+	]
+	coclass TestATLClass
+	{
+		[default] interface ITestATLClass;
+	};
+};
+
+import "shobjidl.idl";

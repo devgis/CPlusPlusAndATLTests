@@ -1,0 +1,57 @@
+﻿// ATLProject1.idl: ATLProject1 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 生成类型库(ATLProject1.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(054b8fb7-611a-40da-8c62-8df2d68d31a8),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMyComClass : IDispatch
+{
+	
+};
+[
+	object,
+	uuid(ecf99993-07f9-4c5c-8272-1bd78996638a),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IFlyMathClass : IDispatch
+{
+	[id(1)]  HRESULT  TestMethods(LONG a, LONG b);
+	[id(2)] HRESULT TestRet(LONG a, LONG b, [out, retval] long* pnVal);
+};
+[
+	uuid(58c3fee0-a418-4792-8c79-7a26c431d1c7),
+	version(1.0),
+]
+library ATLProject1Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(63e06baf-7878-4315-85e0-1aac7425f4d2)
+	]
+	coclass MyComClass
+	{
+		[default] interface IMyComClass;
+	};
+	[
+		uuid(c779aaba-06f2-4608-b09e-f8aeb203c703)
+	]
+	coclass FlyMathClass
+	{
+		[default] interface IFlyMathClass;
+	};
+};
+
+import "shobjidl.idl";
+import "shobjidl.idl";

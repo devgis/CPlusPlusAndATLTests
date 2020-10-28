@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+Source/.vs
+Source/Debug
+Source/MyComLibTest/Debug
+Source/ATLProject1/Debug
+Source/ConsoleApp1/bin
+Source/ConsoleApp1/obj

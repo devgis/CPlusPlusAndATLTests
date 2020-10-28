@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {c779aaba-06f2-4608-b09e-f8aeb203c703} = s 'FlyMathClass class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{58c3fee0-a418-4792-8c79-7a26c431d1c7}'
+			Version = s '1.0'
+		}
+	}
+}
